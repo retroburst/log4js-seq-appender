@@ -1,0 +1,28 @@
+{
+  "name": "log4js-seq-appender",
+  "version": "6.0.0",
+  "description": "A SEQ appender for log4js.",
+  "main": "log4js-seq-appender.js",
+  "dependencies": {
+    "check-types": "^11.1.2",
+    "seq-logging": "^1.1.2"
+  },
+  "scripts": {
+    "test": "test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/retroburst/log4js-seq-appender.git"
+  },
+  "keywords": [
+    "log4js",
+    "SEQ",
+    "appender"
+  ],
+  "author": "Andrew D <retroburst@gmail.com> (retroburst)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/retroburst/log4js-seq-appender/issues"
+  },
+  "homepage": "https://github.com/retroburst/log4js-seq-appender#readme"
+}
