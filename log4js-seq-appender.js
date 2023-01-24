@@ -1,16 +1,18 @@
-const check = require("check-types");
-const seq = require("seq-logging");
+var check = require("check-types");
+var seq = require("seq-logging");
 
 /********************************************************
  * Constructs a new seq appender.
  ********************************************************/
-const seqAppender = function seqAppender(layout, timezoneOffset, enrichment, seqLogger) {
-    let enrichmentResult = null;
+var seqAppender = function seqAppender(layout, timezoneOffset, enrichment, seqLogger) {
+    var enrichmentResult = null;
     if(check.assigned(enrichment) && check.object(enrichment)){
         enrichmentResult = enrichment;
     }
-    const appender = function(loggingEvent) {        
+    var appender = function(loggingEvent) {     
+        var enrichedFromFunction = false;   
         if(check.not.assigned(enrichmentResult) && check.assigned(enrichment) && check.function(enrichment)) {
+            enrichedFromFunction = true;
             enrichmentResult = enrichment(loggingEvent);
         }
         seqLogger.emit({
@@ -19,7 +21,7 @@ const seqAppender = function seqAppender(layout, timezoneOffset, enrichment, seq
             messageTemplate: layout(loggingEvent, timezoneOffset),
             properties: enrichmentResult || { }
         });
-        enrichmentResult = null;
+        if(enrichedFromFunction) { enrichmentResult = null; }
     };
     appender.shutdown = async function(done){ 
         await seqLogger.close(); 
@@ -31,12 +33,12 @@ const seqAppender = function seqAppender(layout, timezoneOffset, enrichment, seq
 /********************************************************
  * Configures and returns a new memory appender.
  ********************************************************/
-const configure = function configure(config, layouts) {
-    let layout = layouts.basicLayout;
+var configure = function configure(config, layouts) {
+    var layout = layouts.basicLayout;
     if(config.layout) {
         layout = layouts.layout(config.layout.type, config.layout);
     }
-    let seqLogger = new seq.Logger({ serverUrl: config.serverUrl, apiKey: config.apiKey });
+    var seqLogger = new seq.Logger({ serverUrl: config.serverUrl, apiKey: config.apiKey });
     return seqAppender(layout, config.timezoneOffset, config.enrichment, seqLogger);
 };
 

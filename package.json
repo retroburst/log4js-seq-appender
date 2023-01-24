@@ -1,6 +1,6 @@
 {
   "name": "log4js-seq-appender",
-  "version": "6.0.0",
+  "version": "6.0.1",
   "description": "A SEQ appender for log4js.",
   "main": "log4js-seq-appender.js",
   "dependencies": {
