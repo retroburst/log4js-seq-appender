@@ -1,11 +1,11 @@
 {
   "name": "log4js-seq-appender",
-  "version": "6.0.1",
+  "version": "6.0.2",
   "description": "A SEQ appender for log4js.",
   "main": "log4js-seq-appender.js",
   "dependencies": {
-    "check-types": "^11.1.2",
-    "seq-logging": "^1.1.2"
+    "check-types": "^11.2.3",
+    "seq-logging": "^3.0.0"
   },
   "scripts": {
     "test": "test.js"
