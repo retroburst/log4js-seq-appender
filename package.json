@@ -1,6 +1,6 @@
 {
   "name": "log4js-seq-appender",
-  "version": "6.0.2",
+  "version": "6.0.3",
   "description": "A SEQ appender for log4js.",
   "main": "log4js-seq-appender.js",
   "dependencies": {
@@ -10,6 +10,7 @@
   "scripts": {
     "test": "test.js"
   },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/retroburst/log4js-seq-appender.git"
